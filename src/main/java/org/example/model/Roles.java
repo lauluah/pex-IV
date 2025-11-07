@@ -1,6 +1,6 @@
 package org.example.model;
 
-public enum Cargos {
+public enum Roles {
     ATENDENTE("Atendente"),
     PIZZAIOLO("Pizzaiolo"),
     GERENTE("Gerente"),
@@ -9,7 +9,7 @@ public enum Cargos {
 
     private final String descricao;
 
-    Cargos(String descricao) {
+    Roles(String descricao) {
         this.descricao = descricao;
     }
 
