@@ -1,8 +1,10 @@
 package org.example.DTO.request;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Past;
 import lombok.Getter;
 import lombok.Setter;
@@ -26,10 +28,10 @@ public class EmployeeDTOrequest {
     @NotBlank(message = "O telefone é obrigatório.")
     private String phone;
 
-    @NotBlank(message = "O endereço é obrigatório.")
-    private String hireDate;
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private LocalDate hireDate;
 
-    @NotBlank
+    @NotNull
     @Enumerated(EnumType.STRING)
     private Roles role;
 
@@ -38,7 +40,7 @@ public class EmployeeDTOrequest {
     private String cpf;
 
 
-    public EmployeeDTOrequest(String name, LocalDate birthDate, String phone, String hireDate, Roles role) {
+    public EmployeeDTOrequest(String name, LocalDate birthDate, String phone, LocalDate hireDate, Roles role) {
         this.name = name;
         this.birthDate = birthDate;
         this.phone = phone;

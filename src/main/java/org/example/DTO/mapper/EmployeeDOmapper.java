@@ -10,10 +10,12 @@ public class EmployeeDOmapper {
 
     public static Employee toEtity(EmployeeDTOrequest employeeRequest) {
         Employee employee = new Employee();
+        employee.setName(employeeRequest.getName());
         employee.setRole(employeeRequest.getRole());
         employee.setPhone(employeeRequest.getPhone());
         employee.setBirthDate(employeeRequest.getBirthDate());
-        employee.setHireDate(LocalDate.parse(employeeRequest.getHireDate()));
+        employee.setHireDate(employeeRequest.getHireDate());
+        employee.setCpf(employeeRequest.getCpf());
         return employee;
     }
 
@@ -21,7 +23,9 @@ public class EmployeeDOmapper {
         EmployeeDTOResponse employeeDTOResponse = new EmployeeDTOResponse();
         employeeDTOResponse.setName(employee.getName());
         employeeDTOResponse.setRole(employee.getRole());
+        employeeDTOResponse.setBirthDate(employee.getBirthDate());
         employeeDTOResponse.setPhone(employee.getPhone());
+        employeeDTOResponse.setHireDate(employee.getHireDate());
         return employeeDTOResponse;
     }
 }

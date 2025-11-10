@@ -28,6 +28,7 @@ public class Employee {
     @Enumerated(EnumType.STRING)
     private Roles role;
 
+    @Column(name = "hireDate", nullable = false)
     private LocalDate hireDate;
 
     @Column(name = "CPF", nullable = false, unique = true)
@@ -36,12 +37,13 @@ public class Employee {
     public Employee() {
     }
 
-    public Employee(long id, String name, LocalDate birthDate, String phone, Roles role, LocalDate hireDate) {
+    public Employee(long id, String name, LocalDate birthDate, String phone, Roles role, LocalDate hireDate, String cpf) {
         this.id = id;
         this.name = name;
         this.birthDate = birthDate;
         this.phone = phone;
         this.role = role;
         this.hireDate = hireDate;
+        this.cpf = cpf;
     }
 }
