@@ -1,10 +1,13 @@
 package org.example.service;
 
+import jakarta.persistence.EntityNotFoundException;
 import org.example.exceptions.EmployeeNotfoundException;
 import org.example.model.Employee;
+import org.example.model.Roles;
 import org.example.repository.EmployeeRepository;
 import org.springframework.stereotype.Service;
 
+import javax.management.relation.Role;
 import java.util.List;
 
 @Service
@@ -40,4 +43,21 @@ public class EmployeeFilterService {
                         )
                 );
     }
+
+    public List<Employee> getEmployeesByRole(Roles role) {
+        List<Employee> employees = employeeRepository.findByRole(role);
+        if (employees.isEmpty()) {
+            throw new EmployeeNotfoundException("Nenhum funcionário encontrado com o papel: " + role);
+        }
+        return employees;
+    }
+
+    public List<Employee> getAllEmployees() {
+        List<Employee> employees = employeeRepository.findAll();
+        if (employees.isEmpty()) {
+            throw new EmployeeNotfoundException("Nenhum funcionário encontrado: ");
+        }
+        return employees;
+    }
+
 }
