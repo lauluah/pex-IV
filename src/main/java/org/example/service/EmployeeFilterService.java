@@ -1,13 +1,11 @@
 package org.example.service;
 
-import jakarta.persistence.EntityNotFoundException;
 import org.example.exceptions.EmployeeNotfoundException;
 import org.example.model.Employee;
 import org.example.model.Roles;
 import org.example.repository.EmployeeRepository;
 import org.springframework.stereotype.Service;
 
-import javax.management.relation.Role;
 import java.util.List;
 
 @Service

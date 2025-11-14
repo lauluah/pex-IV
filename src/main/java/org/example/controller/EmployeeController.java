@@ -1,5 +1,6 @@
 package org.example.controller;
 
+import jakarta.persistence.PostUpdate;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import org.example.DTO.request.EmployeeDTOrequest;
@@ -7,11 +8,13 @@ import org.example.DTO.response.EmployeeDTOResponse;
 import org.example.model.Employee;
 import org.example.model.Roles;
 import org.example.service.EmployeeCreatorService;
+import org.example.service.EmployeeDeleteService;
 import org.example.service.EmployeeFilterService;
+import org.example.service.EmployeeUpdateService;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.management.relation.Role;
 import java.io.OutputStream;
 import java.util.List;
 
@@ -20,10 +23,14 @@ import java.util.List;
 public class EmployeeController {
    EmployeeFilterService employeeFilterService;
    EmployeeCreatorService employeeCreatorService;
+   EmployeeDeleteService employeeDeleteService;
+   EmployeeUpdateService employeeUpdateService;
 
-    public EmployeeController(EmployeeFilterService employeeFilterService, EmployeeCreatorService employeeCreatorService) {
+    public EmployeeController(EmployeeFilterService employeeFilterService, EmployeeCreatorService employeeCreatorService, EmployeeDeleteService employeeDeleteService, EmployeeUpdateService employeeUpdateService) {
         this.employeeFilterService = employeeFilterService;
         this.employeeCreatorService = employeeCreatorService;
+        this.employeeDeleteService = employeeDeleteService;
+        this.employeeUpdateService = employeeUpdateService;
     }
 
     @GetMapping("/employees/pdf")
@@ -76,6 +83,22 @@ public class EmployeeController {
     @GetMapping("/id")
     public Employee getEmployeeByID(@RequestParam Long id) {
         return employeeFilterService.getEmployeeById(id);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> delete(@PathVariable Long id) {
+        employeeDeleteService.deleteEmployeeService(id);
+        return ResponseEntity.ok("Employee deleted successfully");
+    }
+
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Employee> updateEmployee(
+            @PathVariable Long id,
+            @RequestBody EmployeeDTOrequest dto) {
+
+        Employee updated = employeeUpdateService.updateEmployee(id, dto);
+        return ResponseEntity.ok(updated);
     }
 
 }

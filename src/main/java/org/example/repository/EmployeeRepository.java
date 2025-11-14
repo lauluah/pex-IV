@@ -4,7 +4,6 @@ import org.example.model.Employee;
 import org.example.model.Roles;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import javax.management.relation.Role;
 import java.util.List;
 import java.util.Optional;
 

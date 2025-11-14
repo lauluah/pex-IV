@@ -4,8 +4,6 @@ import org.example.DTO.request.EmployeeDTOrequest;
 import org.example.DTO.response.EmployeeDTOResponse;
 import org.example.model.Employee;
 
-import java.time.LocalDate;
-
 public class EmployeeDOmapper {
 
     public static Employee toEtity(EmployeeDTOrequest employeeRequest) {
@@ -21,6 +19,7 @@ public class EmployeeDOmapper {
 
     public static EmployeeDTOResponse toResponse(Employee employee) {
         EmployeeDTOResponse employeeDTOResponse = new EmployeeDTOResponse();
+        employeeDTOResponse.setId(employee.getId());
         employeeDTOResponse.setName(employee.getName());
         employeeDTOResponse.setRole(employee.getRole());
         employeeDTOResponse.setBirthDate(employee.getBirthDate());
