@@ -17,7 +17,7 @@ public class EmployeeFilterService {
     }
 
     public List<Employee> getEmployeeByName(String name) {
-        List<Employee> employees = employeeRepository.findByName(name);
+        List<Employee> employees = employeeRepository.findByNameContainingIgnoreCase(name);
         if(employees.isEmpty()) {
             throw new EmployeeNotfoundException(String.format("Não foi possível encontrar funcionário com o nome: %s", name));
         }

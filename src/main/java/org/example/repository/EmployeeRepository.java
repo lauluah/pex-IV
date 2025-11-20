@@ -11,7 +11,7 @@ public interface EmployeeRepository extends JpaRepository<Employee, Long> {
 
     Optional<Employee> findById(Long aLong);
 
-    List<Employee> findByName(String name);
+    List<Employee>findByNameContainingIgnoreCase(String name);
 
     Optional<Employee> findByCpf(String cpf);
 

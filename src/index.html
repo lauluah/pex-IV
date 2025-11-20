@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Management System</title>
+    <link rel="stylesheet" href="style-features.css">
+
+    <script src="script.js" defer></script>
+</head>
+
+<header>
+    <h1>Employee Management System</h1>
+    <nav>
+        <button onclick="showSection('cadastro')">Cadastrar Funcionário</button>
+        <button onclick="showSection('buscar')">Buscar Funcionários</button>
+        <button onclick="exportPDF()">Exportar PDF</button>
+    </nav>
+</header>
+
+<main>
+
+    <section id="cadastro" class="section active">
+        <h2>Cadastrar Funcionário</h2>
+
+        <form id="formCadastro">
+            <div class="input-group">
+                <label>Nome:</label>
+                <input type="text" id="name" required>
+            </div>
+
+            <div class="input-group">
+                <label>Data de Nascimento:</label>
+                <input type="date" id="birthDate" required>
+            </div>
+
+            <div class="input-group">
+                <label>Telefone:</label>
+                <input type="text" id="phone" required>
+            </div>
+
+
+            <div class="input-group">
+                <label>Cargo:</label>
+                <select id="cargo" required>
+                    <option value="">--Selecione--</option>
+                    <option value="ATENDENTE">Atendente</option>
+                    <option value="PIZZAIOLO">Pizzaíolo</option>
+                    <option value="GERENTE">Gerente</option>
+                    <option value="ENTREGADOR">Entregador</option>
+                    <option value="LIMPEZA">Limpeza</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label>Data de Entrada:</label>
+                <input type="date" id="hireDate" required>
+            </div>
+
+            <div class="input-group">
+                <label>CPF:</label>
+                <input type="text" id="cpf" required>
+            </div>
+
+            <button type="submit" class="btn">Cadastre</button>
+        </form>
+
+        <p id="msgCadastro" class="msg"></p>
+    </section>
+
+    <section id="buscar" class="section">
+        <h2>Buscar Funcionários</h2>
+
+        <div class="search-box">
+            <input type="text" id="buscaNome" placeholder="Buscar por nome">
+            <button onclick="buscarNome()">Buscar</button>
+
+            <input type="text" id="buscaCargo" placeholder="Buscar por cargo">
+            <button onclick="buscarCargo()">Buscar</button>
+
+            <input type="number" id="buscaId" placeholder="Buscar por ID">
+            <button onclick="buscarId()">Buscar</button>
+
+            <button class="btn-listar" onclick="listarTodos()">Listar Todos</button>
+        </div>
+
+        <table id="tabela">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Cargo</th>
+                <th>Entrada</th>
+                <th>Ações</th>
+            </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+
+        <p id="msgBusca" class="msg"></p>
+    </section>
+
+</main>
+</body>
+</html>
