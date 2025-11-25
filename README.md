@@ -38,7 +38,7 @@ O sistema permite criar, listar, filtrar, atualizar e excluir funcionários, al�
 
 
 1️⃣ Clonar o repositório  
-git clone https://github.com/usuario/lauluah
+git clone https://github.com/lauluah/pex-IV.git
 
 2️⃣ Entrar na pasta
 cd seu-repositorio
@@ -48,7 +48,5 @@ mvn spring-boot:run
 
 Frontend
 
-1️⃣ Após rodar o backend, abrir o HTML do frontend no navegador:
-➡️ http://localhost:63342/pexIV/src/index.html
-
+1️⃣ Após rodar o backend, abrir o HTML do frontend no navegador
 ⚠️ Importante: o backend precisa estar rodando antes de abrir o frontend, para que todas as requisições funcionem.
