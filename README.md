@@ -46,7 +46,9 @@ cd seu-repositorio
 3️⃣ Rodar com Maven
 mvn spring-boot:run
 
+Frontend
 
-A API estará disponível em:
+1️⃣ Após rodar o backend, abrir o HTML do frontend no navegador:
+➡️ http://localhost:63342/pexIV/src/index.html
 
-➡️ http://localhost:8081
+⚠️ Importante: o backend precisa estar rodando antes de abrir o frontend, para que todas as requisições funcionem.
