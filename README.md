@@ -12,7 +12,7 @@ O sistema permite criar, listar, filtrar, atualizar e excluir funcionários, al�
 - Buscar por:
   - Nome  
   - Cargo  
-  - ID  
+  - CPF  
 - Listar todos os funcionários  
 - Atualizar dados  
 - Excluir funcionário  
