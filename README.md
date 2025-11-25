@@ -48,5 +48,7 @@ mvn spring-boot:run
 
 Frontend
 
-1️⃣ Após rodar o backend, abrir o HTML do frontend no navegador
+1️⃣ Após rodar o backend, abrir o HTML do frontend no navegador :
+<img width="139" height="37" alt="frontHtml" src="https://github.com/user-attachments/assets/9395314c-c92a-4965-a6a6-122bb90ac384" />
+
 ⚠️ Importante: o backend precisa estar rodando antes de abrir o frontend, para que todas as requisições funcionem.
