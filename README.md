@@ -34,7 +34,7 @@ O sistema permite criar, listar, filtrar, atualizar e excluir funcionários, al�
 - Maven
 
 
-🧰 Como Rodar o Projeto
+- Como Rodar o Projeto
 
 
 1️⃣ Clonar o repositório  
@@ -46,9 +46,10 @@ cd seu-repositorio
 3️⃣ Rodar com Maven
 mvn spring-boot:run
 
-Frontend
+- Frontend 
 
-1️⃣ Após rodar o backend, abrir o HTML do frontend no navegador :
-<img width="139" height="37" alt="frontHtml" src="https://github.com/user-attachments/assets/9395314c-c92a-4965-a6a6-122bb90ac384" />
+Após rodar o backend, clique em um dos ícones dos navegadores abaixo para abrir o frontend diretamente: 
+
+<img width="118" height="33" alt="frontHtml" src="https://github.com/user-attachments/assets/50538937-5006-4816-a062-9398aa1015fb" />
 
 ⚠️ Importante: o backend precisa estar rodando antes de abrir o frontend, para que todas as requisições funcionem.
