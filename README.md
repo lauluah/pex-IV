@@ -38,7 +38,7 @@ O sistema permite criar, listar, filtrar, atualizar e excluir funcionários, al�
 
 
 1️⃣ Clonar o repositório  
-git clone https://github.com/usuario/seu-repositorio.git
+git clone https://github.com/usuario/lauluah
 
 2️⃣ Entrar na pasta
 cd seu-repositorio
