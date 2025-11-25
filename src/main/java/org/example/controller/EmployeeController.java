@@ -16,6 +16,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.OutputStream;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @RestController
@@ -33,7 +34,7 @@ public class EmployeeController {
         this.employeeUpdateService = employeeUpdateService;
     }
 
-    @GetMapping("/employees/pdf")
+    @GetMapping("/pdf")
     public void exportEmployeesPDF(HttpServletResponse response) throws Exception {
         response.setContentType("application/pdf");
         response.setHeader("Content-Disposition", "attachment; filename=funcionarios.pdf");
@@ -47,11 +48,13 @@ public class EmployeeController {
 
             document.add(new com.lowagie.text.Paragraph("Lista de Funcionários\n\n"));
 
+            DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
             for (Employee f : employees) {
                 document.add(new com.lowagie.text.Paragraph(
                         "Nome: " + f.getName() +
-                                ", Cargo: " + f.getRole() +
-                                ", Data de entrada: " + f.getHireDate()
+                                ", Cargo: " + f.getRole().name() +
+                                ", Data de entrada: " + f.getHireDate().format(fmt)
                 ));
             }
 
@@ -71,7 +74,7 @@ public class EmployeeController {
     }
 
     @GetMapping("/role")
-    public List<Employee> getEmployeeByRole(@RequestParam Roles role) {
+    public List<Employee> getEmployeeByRole(@RequestParam String role) {
         return employeeFilterService.getEmployeesByRole(role);
     }
 
@@ -91,7 +94,6 @@ public class EmployeeController {
         return ResponseEntity.ok("Employee deleted successfully");
     }
 
-
     @PutMapping("/{id}")
     public ResponseEntity<Employee> updateEmployee(
             @PathVariable Long id,
@@ -99,6 +101,11 @@ public class EmployeeController {
 
         Employee updated = employeeUpdateService.updateEmployee(id, dto);
         return ResponseEntity.ok(updated);
+    }
+
+    @GetMapping("/all")
+    public List<Employee> getAllEmployees() {
+        return employeeFilterService.getAllEmployees();
     }
 
 }

@@ -6,6 +6,9 @@ import org.example.model.Roles;
 import org.example.repository.EmployeeRepository;
 import org.springframework.stereotype.Service;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -42,12 +45,18 @@ public class EmployeeFilterService {
                 );
     }
 
-    public List<Employee> getEmployeesByRole(Roles role) {
-        List<Employee> employees = employeeRepository.findByRole(role);
-        if (employees.isEmpty()) {
-            throw new EmployeeNotfoundException("Nenhum funcionário encontrado com o papel: " + role);
+    public List<Employee> getEmployeesByRole(String roleFilter) {
+        List<Roles> matchedRoles = Arrays.stream(Roles.values())
+                .filter(r -> r.name().toLowerCase().contains(roleFilter.toLowerCase()))
+                .toList();
+
+        List<Employee> result = new ArrayList<>();
+
+        for (Roles role : matchedRoles) {
+            result.addAll(employeeRepository.findByRole(role));
         }
-        return employees;
+
+        return result;
     }
 
     public List<Employee> getAllEmployees() {

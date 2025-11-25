@@ -64,17 +64,17 @@ async function buscarNome() {
 async function buscarCargo() {
     const cargo = document.getElementById("buscaCargo").value;
     if (!cargo) return alert("Selecione um cargo para buscar");
-    buscar(`${API}/employee/role/${encodeURIComponent(cargo)}`);
+    buscar(`${API}/employee/role?role=${encodeURIComponent(cargo)}`);
 }
 
-async function buscarId() {
-    const id = document.getElementById("buscaId").value.trim();
-    if (!id) return alert("Digite um ID válido");
-    buscar(`${API}/employee/${encodeURIComponent(id)}`);
+async function buscarCpf() {
+    const cpf = document.getElementById("buscaCpf").value.trim();
+    if (!id) return alert("Digite um CPF válido");
+    buscar(`${API}/employee/cpf?cpf=${encodeURIComponent(cpf)}`);
 }
 
 async function listarTodos() {
-    buscar(`${API}/employee`);
+    buscar(`${API}/employee/all?all=${encodeURIComponent()}`);
 }
 
 
@@ -100,11 +100,18 @@ async function buscar(url) {
     }
 }
 
-    async function excluir(id) {
-        if (!confirm("Deseja excluir este funcionário?")) return;
-        await fetch(`${API}/employee/${id}`, { method: "DELETE" });
-        listarTodos();
-    }
+   async function excluir(id) {
+       if (!confirm("Deseja excluir este funcionário?")) return;
+
+       const res = await fetch(`${API}/employee/${id}`, { method: "DELETE" });
+
+       if (res.ok) {
+           alert("Funcionário excluído!");
+           listarTodos();
+       } else {
+           alert("Erro ao excluir funcionário.");
+       }
+   }
 
 
     async function editar(id) {
@@ -125,5 +132,5 @@ async function buscar(url) {
 
 
     function exportPDF() {
-        window.open(`${API}/employees/pdf`, "_blank");
+        window.open(`${API}/employee/pdf`, "_blank");
     }
